@@ -1,0 +1,17 @@
+.App {
+   font-family: 'Source Sans Pro',Tahoma,Geneva;
+    text-align: center;
+  }
+  
+  
+  body{
+    margin:0;
+    padding: 0;
+    font-family: 'Source Sans Pro',Tahoma,Geneva;
+  }
+  .center{
+    text-align: center;
+  }
+  a{
+    text-decoration: none;
+  }
