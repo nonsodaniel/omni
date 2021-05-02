@@ -1,17 +1,26 @@
 
-import React from 'react';
-import Home from "./components/home/Home";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from './components/layouts/Header';
-import Footer from './components/layouts/Footer';
+import Sidebar from "./components/layouts/Sidebar";
+import Dashboard from "./components/dashboard/Dashboard";
+import Contact from "./components/contact/Contact";
 const App = () => {
   return (
     <BrowserRouter>
       <div className="app">
-        {/* <Header />
-        <Route exact path="/" component={Home} />
-        <Footer /> */}
-        Hello
+        <Header />
+        <div className="container-fluid">
+          <div className="row">
+            <Sidebar />
+            <main role="main" className="col-md-10 ">
+              <Switch>
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/contact" component={Contact} />
+              </Switch>
+            </main>
+          </div>
+        </div>
       </div>
     </BrowserRouter>
   );
