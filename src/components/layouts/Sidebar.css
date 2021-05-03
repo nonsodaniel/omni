@@ -23,11 +23,30 @@
     border-radius: .428rem;
     position: -webkit-sticky;
     position: sticky;
-    top: 48px; /* Height of navbar */
+    top: 6px; /* Height of navbar */
     height: 100vh;
     padding-top: .5rem;
     overflow-x: hidden;
     overflow-y: auto;
+  }
+  .logo-link{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 45px;
+    text-decoration: none;
+    margin-left: 15px;
+  }
+  .logo-text{
+    color: #7367f0;
+    font-weight: 600;
+    letter-spacing: .01rem;
+    font-size: 1.15rem;
+    padding: 0 10px;
+  }
+  .img-wrap{
+    height: 30px;
+    width: 45px;
   }
   .btn-primary,
   .btn-primary:hover,
@@ -43,10 +62,20 @@
   @media only screen and (max-width: 768px){
     .sidebar-sticky {
       height: 100%;
-  };
+  }
   .side-bar .list-wrap{
-    flex-direction: row !important;
+    flex-direction: row ;
     justify-content: center;
     margin-bottom: 40px;
   }
+  .logo-link{
+    justify-content: center;
+    margin: 0;
+  }
+  .img-wrap {
+    height: auto;
+    width: 60px;
 }
+
+}
+

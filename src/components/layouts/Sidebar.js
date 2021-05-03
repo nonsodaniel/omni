@@ -1,13 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import "./Navbar.css";
-// import logo from '../assets/logo.png'
+const logo =
+  "https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/demo-1/img/logo.36f34a9f.svg";
 const Sidebar = () => {
   return (
     <nav className="col-md-2 side-bar">
       <div className="sidebar-sticky">
         <Link className="logo-link" to="/dashboard">
-          NonsoDaniel Inc.
+          <span className="img-wrap">
+            <img src={logo} alt="Company Logos" />
+          </span>
+          <h5 className="logo-text">Nonso</h5>
         </Link>
         <ul className=" list-wrap flex-row-sm">
           <li className="nav-item">

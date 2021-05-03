@@ -1,0 +1,17 @@
+
+.contact-header{
+    display: flex;
+    justify-content:space-between; 
+}
+
+@media only screen and (max-width: 768px){
+    .contact-header{
+        display: block;
+    }
+    .main-content h1{
+        text-align: center;
+      }
+      .main-content a{
+        display: none;
+      }
+}

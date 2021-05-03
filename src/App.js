@@ -8,13 +8,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="app">
- 
         <div className="container-fluid">
           <div className="row">
             <Sidebar />
-          
+
             <main role="main" className="col-md-10 main">
-            {/* <Header /> */}
               <Switch>
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/contact" component={Contact} />

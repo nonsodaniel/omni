@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./contacts.css";
 
 const ContactHeader = () => {
   return (
-    <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <div className="contact-header flex-wrap flex-md-nowrap  pb-2 mb-3 border-bottom">
       <h1 className="h2">Add contact</h1>
       <Link type="button" className="btn btn-primary" to="/dashboard">
         <span>
