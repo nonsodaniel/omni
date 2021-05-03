@@ -1,7 +1,6 @@
 import TagsInput from "react-tagsinput";
 import React, { useState } from "react";
-
-import "react-tagsinput/react-tagsinput.css"; // If using WebPack and style-loader.
+import "./address.css";
 
 const Address = (props) => {
   const [tags, setTag] = useState([]);
@@ -14,7 +13,10 @@ const Address = (props) => {
       <TagsInput
         value={tags}
         onChange={handleChangec}
-        inputProps={{ placeholder: "Your address", className: "form-control" }}
+        inputProps={{
+          placeholder: "Your address",
+          className: "form-control address-box",
+        }}
       />
     </>
   );
