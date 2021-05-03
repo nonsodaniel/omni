@@ -1,0 +1,38 @@
+.nav-item{
+    padding-bottom: 1rem;
+  }
+    .nav-link{
+      color: #625f6e;
+      font-size: 17px;
+    }
+    .nav-link:hover{
+      color: var(--bg-primary);
+      font-size: 17px;
+      transition: 1ms ease-in-out;
+    }
+  .nav-link.active{
+    background: linear-gradient(
+      118deg
+      ,var(--bg-primary),rgba(115,103,240,.7));
+      color: #fff;
+      box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%);
+      border-radius: 4px;
+  }
+
+
+  nav{
+    position: sticky;
+    z-index: 12;
+    background: #fff;
+    border-radius: .428rem;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  }
+
+  .main-content{
+    padding: 3rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    border-radius: .428rem;
+    background: #fff;
+  }
+  

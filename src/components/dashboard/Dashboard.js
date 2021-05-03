@@ -30,6 +30,7 @@ const Dashboard = () => {
           <thead>
             <tr>
               <th>#</th>
+              <th>ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
@@ -40,11 +41,12 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {data && data.length > 0 ? (
-              data.map((_data) => {
+              data.map((_data, index) => {
                 console.log(_data);
                 let { id, name, email, phone, address, lat, long } = _data;
                 return (
                   <tr key={id}>
+                       <td>{index+1}</td>
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{email}</td>
