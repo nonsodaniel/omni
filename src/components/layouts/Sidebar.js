@@ -1,17 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+// import logo from '../assets/logo.png'
 const Sidebar = () => {
   return (
-    <nav className="col-md-2 bg-light">
+    <nav className="col-md-2 side-bar">
       <div className="sidebar-sticky">
-        <ul className="nav flex-column">
+          <Link className="" to="/dashboard">
+            NonsoDaniel Inc.
+        </Link>
+        <ul className="nav flex-column list-wrap">
           <li className="nav-item">
             <NavLink className="nav-link" to="/dashboard">
-              Dashboard
+             <span><svg xmlns="http://www.w3.org/2000/svg" 
+             width="10px" height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="2" strokeLinecap="round"
+               strokeLinejoin="round" className="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+                   </path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span> <span>Dashboard</span> 
             </NavLink>
           </li>
-          <li className="nav-item ">
+          <li className="nav-item">
             <NavLink className="nav-link" to="/contact">
-              Add Contact
+             <span>  <svg xmlns="http://www.w3.org/2000/svg"  width="10px" height="14px"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+              strokeLinecap="round" strokeLinejoin="round"
+               className="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span> <span>Add Contact</span> 
             </NavLink>
           </li>
         </ul>

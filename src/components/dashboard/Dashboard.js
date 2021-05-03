@@ -1,9 +1,18 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import MyMapComponent from "../utils/Map";
+import MapErrorBoundary from "../utils/MapErrorBoundary";
+import DashboardHeader from "./DashboardHeader";
+
 const Dashboard = () => {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+      let localData = JSON.parse(localStorage.getItem("contacts"));
+      localData && localData.length !== 0 ? setData(localData) : setData([]);
+    }, []);
   return (
     <div className="main-content">
-      <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <h1 className="h2">Dashboard</h1>
-      </div>
+     <DashboardHeader />
       <div className="table-responsive">
         <table className="table table-striped ">
           <thead>
@@ -18,33 +27,36 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {[1, 2, 3, 4].map((o) => {
-              return (
-                <>
-                  <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                    <td>sit</td>
-                    <td>sit</td>
-                  </tr>
-
-                  <tr>
-                    <td>1,008</td>
-                    <td>Fusce</td>
-                    <td>nec</td>
-                    <td>tellus</td>
-                    <td>sed</td>
-                    <td>sit</td>
-                    <td>sit</td>
-                  </tr>
-                </>
-              );
-            })}
+            { data && data.length > 0
+                          ?   data.map((_data) => {
+                              console.log(_data)
+                              let {id, name, email, phone, address, lat, long} = _data
+                          return (
+                              <tr key={id}>
+                                <td>{id}</td>
+                                <td>{name}</td>
+                                <td>{email}</td>
+                                <td>{phone}</td>
+                                <td>{address}</td>
+                                <td>{lat}</td>
+                                <td>{long}</td>
+                              </tr>
+                          );
+                        }): <tr className='text-center'>Contact details is empty</tr>}
           </tbody>
         </table>
+      </div>
+      <div className="map-box">
+          <MapErrorBoundary>
+          <MyMapComponent
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+          </MapErrorBoundary>
+        
       </div>
     </div>
   );
