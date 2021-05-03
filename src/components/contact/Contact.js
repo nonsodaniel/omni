@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
-import {  validateEmail } from "../utils/helpers";
+import { withRouter } from "react-router-dom";
+import {  getLocation, validateEmail } from "../utils/helpers";
+import ContactHeader from "./ContactHeader";
 
 const Contact = (props) => {
   const [name, setName] = useState("");
@@ -60,13 +61,7 @@ const Contact = (props) => {
       }
     }
   };
-  const getLocation = async () => {
-    if (navigator.geolocation) {
-     await navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-      console.log("Geolocation is not supported by this browser.");
-    }
-  }
+
   
   const showPosition =(position) => {
       if(position){
@@ -76,21 +71,15 @@ const Contact = (props) => {
       }
   }
   useEffect(() => {
-    getLocation()
+    showPosition()
+    getLocation(showPosition)
       let localData =JSON.parse( localStorage.getItem("contacts"));
     localData && localData.length !== 0 ? setData(localData) : setData([])
   }, [])
 
   return (
     <div className="main-content">
-      <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <h1 className="h2">Add contact</h1>
-        <Link type="button" className="btn btn-primary" to="/dashboard">
-          <span> <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-          </span>
-         <span>  View contact(s) </span>  
-             </Link>
-      </div>
+      <ContactHeader />
       <div className="form-container mb-3">
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
@@ -190,10 +179,14 @@ const Contact = (props) => {
             />
           </div>
           <button type="submit" className="btn btn-primary">
-              {loading && (
-          <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-              )}
-           <span>Submit</span> 
+            {loading && (
+              <span
+                className="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+            )}
+            <span>Submit</span>
           </button>
         </form>
       </div>
