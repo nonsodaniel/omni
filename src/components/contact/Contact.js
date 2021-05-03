@@ -48,8 +48,15 @@ const Contact = (props) => {
     e.preventDefault();
     validateDetails();
     if ( validateDetails()) {
-      const obj = {id: Date.now(), name, email, phone, address, lat, long };
-
+      const obj = {
+        id: Date.now(),
+        name,
+        email,
+        phone,
+        address,
+        lat,
+        long,
+      };
       if (data.length > 0) {
         let newData = [...data, obj];
         localStorage.setItem("contacts", JSON.stringify(newData));
