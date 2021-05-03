@@ -6,7 +6,11 @@ const ContactHeader = () => {
   return (
     <div className="contact-header flex-wrap flex-md-nowrap  pb-2 mb-3 border-bottom">
       <h1 className="h2">Add contact</h1>
-      <Link type="button" className="btn btn-primary" to="/dashboard">
+      <Link
+        type="button"
+        className="btn btn-primary view-contact"
+        to="/dashboard"
+      >
         <span>
           {" "}
           <svg

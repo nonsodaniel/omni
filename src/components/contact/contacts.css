@@ -14,7 +14,7 @@
     .main-content h1{
         text-align: center;
       }
-      .main-content a{
+      .main-content .view-contact{
         display: none;
       }
 }
