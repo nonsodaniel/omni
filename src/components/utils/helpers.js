@@ -7,6 +7,6 @@ export const getLocation = async (showPosition) => {
   if (navigator.geolocation) {
     await navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    console.log("Geolocation is not supported by this browser.");
+   alert("Geolocation is not supported by this browser.");
   }
 };

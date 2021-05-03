@@ -16,12 +16,11 @@ const Dashboard = () => {
       }
     };
     useEffect(() => {
-        showPosition();
-        getLocation(showPosition);
+      showPosition();
+      getLocation(showPosition);
       let localData = JSON.parse(localStorage.getItem("contacts"));
       localData && localData.length !== 0 ? setData(localData) : setData([]);
     }, []);
-    console.log(lat, lng)
   return (
     <div className="main-content">
       <DashboardHeader />
@@ -42,11 +41,10 @@ const Dashboard = () => {
           <tbody>
             {data && data.length > 0 ? (
               data.map((_data, index) => {
-                console.log(_data);
                 let { id, name, email, phone, address, lat, long } = _data;
                 return (
                   <tr key={id}>
-                       <td>{index+1}</td>
+                    <td>{index + 1}</td>
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{email}</td>
@@ -71,7 +69,7 @@ const Dashboard = () => {
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `400px` }} />}
             mapElement={<div style={{ height: `100%` }} />}
-            position={lat && lng ? { lat, lng    } : { lat: 6.5244, lng : 3.3792   }}
+            position={lat && lng ? { lat, lng } : { lat: 6.5244, lng: 3.3792 }}
           />
         </MapErrorBoundary>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import {  getLocation, validateEmail } from "../utils/helpers";
 import ContactHeader from "./ContactHeader";
@@ -49,15 +49,13 @@ const Contact = (props) => {
     if ( validateDetails()) {
       const obj = {id: Date.now(), name, email, phone, address, lat, long };
 
-      if(data.length > 0){
-          let newData = [...data, obj]
-        localStorage.setItem("contacts",JSON.stringify(newData));
-        console.log(2)
-        props.history.push('/dashboard')
-      }else{
-        console.log(3)
-        localStorage.setItem("contacts",JSON.stringify([obj]));
-        props.history.push('/dashboard')
+      if (data.length > 0) {
+        let newData = [...data, obj];
+        localStorage.setItem("contacts", JSON.stringify(newData));
+        props.history.push("/dashboard");
+      } else {
+        localStorage.setItem("contacts", JSON.stringify([obj]));
+        props.history.push("/dashboard");
       }
     }
   };
