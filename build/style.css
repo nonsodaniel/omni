@@ -1,0 +1,30 @@
+:root {
+  --bg-primary: #7367f0 ;
+}
+
+body {
+    font-size: .875rem;
+    background-color: #f8f8f8;
+  }
+  
+  .feather {
+    width: 16px;
+    height: 21px;
+    vertical-align: text-bottom;
+  }
+  .feather-plus{
+    height: 18px;
+  }
+  .feather-eye{
+    height: 15px;
+  }
+   
+   .font-11{
+    font-size: 11px;
+  }
+  .border-top { border-top: 1px solid #e5e5e5; }
+  .border-bottom { border-bottom: 1px solid #e5e5e5; }
+ 
+
+
+ 
