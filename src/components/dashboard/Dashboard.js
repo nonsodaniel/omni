@@ -49,52 +49,54 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {data && data.length > 0 ? (
-              data.map((_data, index) => {
-                let { id, name, email, phone, address, lat, long } = _data;
-                return (
-                  <tr key={id}>
-                    <td>{index + 1}</td>
-                    <td>{id}</td>
-                    <td>{name}</td>
-                    <td>{email}</td>
-                    <td>{phone}</td>
-                    <td>{randomAddress(address)}</td>
-                    <td>{lat}</td>
-                    <td>{long}</td>
-                    <td id={id} className="pointer" onClick={deleteContact}>
-                      <span id={id}>
-                        <svg
-                          id={id}
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14px"
-                          height="14px"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="mr-50 feather feather-trash"
-                        >
-                          <polyline points="3 6 5 6 21 6"></polyline>
-
-                          <path
+            {data && data.length > 0
+              ? data.map((_data, index) => {
+                  let { id, name, email, phone, address, lat, long } = _data;
+                  return (
+                    <tr key={id}>
+                      <td>{index + 1}</td>
+                      <td>{id}</td>
+                      <td>{name}</td>
+                      <td>{email}</td>
+                      <td>{phone}</td>
+                      <td>{randomAddress(address)}</td>
+                      <td>{lat}</td>
+                      <td>{long}</td>
+                      <td id={id} className="pointer" onClick={deleteContact}>
+                        <span id={id}>
+                          <svg
                             id={id}
-                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-                          ></path>
-                        </svg>
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <tr className="text-center">Contact details is empty</tr>
-            )}
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14px"
+                            height="14px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="mr-50 feather feather-trash"
+                          >
+                            <polyline points="3 6 5 6 21 6"></polyline>
+
+                            <path
+                              id={id}
+                              d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                            ></path>
+                          </svg>
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })
+              : null}
           </tbody>
         </table>
+       
       </div>
+      {!data || data.length === 0 ? (
+          <h5 className="text-center py-4">No data to show</h5>
+        )   : null}
       <div className="map-box">
         <MapErrorBoundary>
           <MyMapComponent

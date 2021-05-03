@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import "./Navbar.css";
 const logo =
-  "https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/demo-1/img/logo.36f34a9f.svg";
+  "https://res.cloudinary.com/nonsoblip/image/upload/v1620008559/logo.36f34a9f_uzyyrb.svg";
 const Sidebar = () => {
   return (
     <nav className="col-md-2 side-bar">
