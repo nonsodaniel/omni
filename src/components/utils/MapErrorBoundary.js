@@ -10,14 +10,18 @@ class MapErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-  }
-
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1 className="text-center">Map Could not be loaded</h1>;
+      return (
+        (
+        <h5 className="text-center">
+          
+          Map Could not be loaded, kindly check your Internet connection!
+        
+        </h5>
+      )
+      );
     }
     return this.props.children;
   }
