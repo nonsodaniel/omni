@@ -18,7 +18,13 @@ body {
   .feather-eye{
     height: 15px;
   }
-   
+  .feather-trash{
+    color: red;
+  } 
+  .pointer{
+    cursor: pointer;
+  }
+  
    .font-11{
     font-size: 11px;
   }
@@ -27,4 +33,27 @@ body {
  
 
 
- 
+  textarea:focus, 
+  textarea.form-control:focus, 
+  input.form-control:focus, 
+  input[type=text]:focus, 
+  input[type=password]:focus, 
+  input[type=email]:focus, 
+  input[type=number]:focus, 
+  [type=text].form-control:focus, 
+  [type=password].form-control:focus, 
+  [type=email].form-control:focus, 
+  [type=tel].form-control:focus, 
+  [contenteditable].form-control:focus {
+    box-shadow: inset 0 -1px 0 #ddd;
+  }
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}

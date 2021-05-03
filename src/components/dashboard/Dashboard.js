@@ -15,6 +15,11 @@ const Dashboard = () => {
         setLong(longitude);
       }
     };
+    const deleteContact = ({target}) =>{
+      let newData = data.filter(_data => +_data.id !== +target.id);
+      setData(newData)
+      localStorage.setItem("contacts", JSON.stringify(newData));
+    }
     useEffect(() => {
       showPosition();
       getLocation(showPosition);
@@ -36,6 +41,7 @@ const Dashboard = () => {
               <th>Address</th>
               <th>Longitude</th>
               <th>Latitude</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -51,7 +57,44 @@ const Dashboard = () => {
                     <td>{phone}</td>
                     <td>{address}</td>
                     <td>{lat}</td>
-                    <td>{long}</td>
+                    <td >{long}</td>
+                    <td id={id} className='pointer' onClick={deleteContact}>
+                      <span id={id}>
+                      <svg id={id}
+                    
+                     
+
+                                               xmlns="http://www.w3.org/2000/svg"
+
+                                               width="14px"
+
+                                               height="14px"
+                       
+                        viewBox="0 0 24 24"
+                       
+                        fill="none"
+                       
+                        stroke="currentColor"
+                      
+                         strokeWidth="2"
+
+                                               strokeLinecap="round"
+
+                                               strokeLinejoin="round"
+
+                                               className="mr-50 feather feather-trash"
+                      
+                      >
+                        
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        
+                        <path id={id} d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      
+                      </svg>
+                    
+                      </span>
+                     
+                    </td>
                   </tr>
                 );
               })

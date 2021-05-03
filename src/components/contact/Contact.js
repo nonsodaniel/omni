@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import {  getLocation, validateEmail } from "../utils/helpers";
+import Address from "./Address";
 import ContactHeader from "./ContactHeader";
 
 const Contact = (props) => {
@@ -34,7 +35,7 @@ const Contact = (props) => {
       setPhoneError(true);
       valid =  false
     }
-    if (address === "") {
+    if (address.length === 0) {
       setLoading(false);
       setAddressError(true);
       valid =  false
@@ -68,13 +69,15 @@ const Contact = (props) => {
           setLong(longitude)
       }
   }
+  const addressTags = (tags) => {
+    setAddress(tags);
+  };
   useEffect(() => {
     showPosition()
     getLocation(showPosition)
       let localData =JSON.parse( localStorage.getItem("contacts"));
     localData && localData.length !== 0 ? setData(localData) : setData([])
   }, [])
-
   return (
     <div className="main-content">
       <ContactHeader />
@@ -87,15 +90,15 @@ const Contact = (props) => {
               className="form-control"
               id="name"
               aria-describedby="name"
-              placeholder="Enter Name"
+              placeholder="Your Name"
               value={name}
               onChange={({ target }) => {
                 setName(target.value);
               }}
             />
-            {nameError && name.length < 6 && (
+            {nameError && name.length < 2 && (
               <small id="nameError" className="form-text text-danger">
-                Name can not be empty & must be 6 digits or more
+                Name can not be empty & must be 2 digits or more
               </small>
             )}
           </div>
@@ -106,7 +109,7 @@ const Contact = (props) => {
               className="form-control"
               id="email"
               value={email}
-              placeholder="Enter email"
+              placeholder="Your email"
               onChange={({ target }) => {
                 setEmail(target.value);
               }}
@@ -119,12 +122,12 @@ const Contact = (props) => {
           </div>
 
           <div className="form-group mb-3">
-            <label htmlFor="phone">Phone</label>
+            <label htmlFor="phone">Phone  <b>*(Valid 11 digits)</b></label>
             <input
               type="number"
               className="form-control"
               id="phone"
-              placeholder="Enter Phone Number"
+              placeholder="Your Phone Number"
               value={phone}
               onChange={({ target }) => {
                 setPhone(target.value);
@@ -137,20 +140,11 @@ const Contact = (props) => {
             )}
           </div>
           <div className="form-group mb-3">
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              className="form-control"
-              id="address"
-              placeholder="Enter Address"
-              value={address}
-              onChange={({ target }) => {
-                setAddress(target.value);
-              }}
-            />
-            {addressError && address.length < 6 && (
-              <small id="phoneError" className="form-text text-danger">
-                Phone number must be valid
+            <label htmlFor="address">Address <b>*(type your address & enter)</b></label>
+            <Address  tagsDetails={addressTags}/>
+            {addressError && address.length === 0  && (
+              <small id="addressError" className="form-text text-danger">
+                Address can not be empty
               </small>
             )}
           </div>
