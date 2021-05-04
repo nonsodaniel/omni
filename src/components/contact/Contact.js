@@ -17,6 +17,8 @@ const Contact = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [addressError, setAddressError] = useState(false);
+  const [latError, setLatError] = useState(false);
+  const [longError, setLongError] = useState(false);
 
   const validateDetails = () => {
       let valid = true
@@ -39,6 +41,16 @@ const Contact = (props) => {
       setLoading(false);
       setAddressError(true);
       valid =  false
+    }
+    if (lat === "") {
+      setLoading(false);
+      setLatError(true);
+      valid = false;
+    }
+    if (long === "") {
+      setLoading(false);
+      setLongError(true);
+      valid = false;
     }
     return valid;
   };
@@ -129,7 +141,9 @@ const Contact = (props) => {
           </div>
 
           <div className="form-group mb-3">
-            <label htmlFor="phone">Phone  <b>*(Valid 11 digits)</b></label>
+            <label htmlFor="phone">
+              Phone <b>*(Valid 11 digits)</b>
+            </label>
             <input
               type="number"
               className="form-control"
@@ -147,9 +161,11 @@ const Contact = (props) => {
             )}
           </div>
           <div className="form-group mb-3">
-            <label htmlFor="address">Address <b>*(type your address & enter)</b></label>
-            <Address  tagsDetails={addressTags}/>
-            {addressError && address.length === 0  && (
+            <label htmlFor="address">
+              Address <b>*(type your address & enter)</b>
+            </label>
+            <Address tagsDetails={addressTags} />
+            {addressError && address.length === 0 && (
               <small id="addressError" className="form-text text-danger">
                 Address can not be empty
               </small>
@@ -165,6 +181,12 @@ const Contact = (props) => {
               value={lat && lat}
               disabled
             />
+            {latError && (
+              <small id="latError" className="form-text text-danger">
+                Latitude can not be empty, kindly check your Internet connection and
+                refresh this page
+              </small>
+            )}
           </div>
           <div className="form-group mb-3">
             <label htmlFor="address">Longitude</label>
@@ -176,6 +198,12 @@ const Contact = (props) => {
               value={long && long}
               disabled
             />
+             {longError && (
+              <small id="latError" className="form-text text-danger">
+                Longitude can not be empty, kindly check your Internet connection and
+                refresh this page
+              </small>
+            )}
           </div>
           <button type="submit" className="btn btn-primary">
             {loading && (
